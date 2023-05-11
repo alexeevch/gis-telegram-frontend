@@ -5,7 +5,6 @@ import { StartModule } from './commands/start/start.module';
 
 import * as LocalSession from 'telegraf-session-local';
 import * as process from 'process';
-import { CategoryQuestionModule } from './modules/categoryQuestion/categoryQuestion.module';
 
 const sessions = new LocalSession({ database: 'session_db.json' });
 
@@ -21,7 +20,6 @@ const sessions = new LocalSession({ database: 'session_db.json' });
       token: process.env.BOT_TOKEN,
     }),
     StartModule,
-    CategoryQuestionModule,
   ],
 })
 export class AppModule {}
