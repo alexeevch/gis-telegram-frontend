@@ -14,7 +14,7 @@ export class StartUpdate {
   }
 
   @Hears(CATEGORY_QUESTION_SCENE_TITLE)
-  async onInformationSystemCommand(@Ctx() ctx: Context): Promise<void> {
+  async onInformationSystemHears(@Ctx() ctx: Context): Promise<void> {
     await ctx.scene.enter(CATEGORY_QUESTION_SCENE_ID);
   }
 }
