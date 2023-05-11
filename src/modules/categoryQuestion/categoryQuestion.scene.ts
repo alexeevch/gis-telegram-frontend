@@ -1,20 +1,22 @@
 import { Scene, SceneEnter, SceneLeave, Command, Ctx } from 'nestjs-telegraf';
 import {
-  FEEDBACK_SCENE_TITLE,
-  GUIDE_SCENE_TITLE,
   CATEGORY_QUESTION_SCENE_ID,
   CATEGORY_QUESTION_SCENE_TITLE,
-  MAIN_MENU_SCENE_TITLE,
 } from '../../app.constants';
 import { Context } from '../../interfaces/context.interface';
+import { CategoryQuestionService } from './categoryQuestion.service';
 
 @Scene(CATEGORY_QUESTION_SCENE_ID)
 export class CategoryQuestionScene {
+  constructor(
+    private readonly categoryQuestionService: CategoryQuestionService,
+  ) {}
   @SceneEnter()
   async OnSceneEnter(@Ctx() ctx: Context) {
+    const questions = await this.categoryQuestionService.getAll();
     await ctx.reply(`Вы вошли в сцену ${CATEGORY_QUESTION_SCENE_TITLE}`, {
       reply_markup: {
-        keyboard: [['IS1'], ['IS2'], ['IS3'], ['IS4']],
+        keyboard: questions,
         one_time_keyboard: true,
         resize_keyboard: true,
       },
