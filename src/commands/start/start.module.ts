@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { StartUpdate } from './start.update';
-import { InformationSystemSceneScene } from '../information-system/information-system.scene';
+import { CategoryQuestionScene } from '../../modules/categoryQuestion/categoryQuestionScene';
+import { MainMenuScene } from '../../modules/mainMenu/mainMenu.scene';
 
 @Module({
-  providers: [StartUpdate, InformationSystemSceneScene],
+  providers: [StartUpdate, MainMenuScene, CategoryQuestionScene],
 })
 export class StartModule {}

@@ -1,16 +1,20 @@
-import { Command, Ctx, Start, Update } from 'nestjs-telegraf';
+import { Ctx, Hears, Start, Update } from 'nestjs-telegraf';
 import { Context } from '../../interfaces/context.interface';
-import { INFORMATION_SYSTEM_SCENE } from '../../app.constants';
+import {
+  CATEGORY_QUESTION_SCENE_ID,
+  CATEGORY_QUESTION_SCENE_TITLE,
+  MAIN_MENU_SCENE_ID,
+} from '../../app.constants';
 
 @Update()
 export class StartUpdate {
   @Start()
-  onStart(): string {
-    return 'Ну привет';
+  async onStart(@Ctx() ctx: Context): Promise<void> {
+    await ctx.scene.enter(MAIN_MENU_SCENE_ID);
   }
 
-  @Command('choseIS')
+  @Hears(CATEGORY_QUESTION_SCENE_TITLE)
   async onInformationSystemCommand(@Ctx() ctx: Context): Promise<void> {
-    await ctx.scene.enter(INFORMATION_SYSTEM_SCENE);
+    await ctx.scene.enter(CATEGORY_QUESTION_SCENE_ID);
   }
 }
