@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { StartUpdate } from './start.update';
-import { CategoryQuestionScene } from '../../modules/categoryQuestion/categoryQuestionScene';
 import { MainMenuScene } from '../../modules/mainMenu/mainMenu.scene';
+import { CategoryQuestionModule } from '../../modules/categoryQuestion/categoryQuestion.module';
 
 @Module({
-  providers: [StartUpdate, MainMenuScene, CategoryQuestionScene],
+  imports: [CategoryQuestionModule],
+  providers: [StartUpdate, MainMenuScene],
 })
 export class StartModule {}
