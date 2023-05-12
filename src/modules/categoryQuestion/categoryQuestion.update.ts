@@ -6,6 +6,4 @@ export class CategoryQuestionUpdate {
   constructor(
     private readonly categoryQuestionService: CategoryQuestionService,
   ) {}
-
-
 }

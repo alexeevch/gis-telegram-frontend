@@ -9,7 +9,7 @@ export class CategoryQuestionService {
   async getAll() {
     return await lastValueFrom(
       this.http
-        .get('https://api.gis.hard2code.ru/api/v1/information-systems', {
+        .get('https://api.gis.hard2code.ru/api/v1/categories', {
           headers: { Authorization: `Basic ${process.env.API_AUTH_TOKEN}` },
         })
         .pipe(map((response) => response.data)),
@@ -19,14 +19,13 @@ export class CategoryQuestionService {
   async getLabelsAll() {
     const response = await lastValueFrom(
       this.http
-        .get('https://api.gis.hard2code.ru/api/v1/information-systems', {
+        .get('https://api.gis.hard2code.ru/api/v1/categories', {
           headers: { Authorization: `Basic ${process.env.API_AUTH_TOKEN}` },
         })
         .pipe(map((response) => response.data)),
     );
 
     const labels = response.map((item) => [item.name]);
-    console.log(labels);
     return labels;
   }
 }

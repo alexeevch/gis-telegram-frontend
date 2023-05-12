@@ -5,6 +5,7 @@ import {
   Command,
   Ctx,
   Hears,
+  On,
 } from 'nestjs-telegraf';
 import {
   CATEGORY_QUESTION_SCENE_ID,
@@ -13,6 +14,7 @@ import {
 } from '../../app.constants';
 import { Context } from '../../interfaces/context.interface';
 import { CategoryQuestionService } from './categoryQuestion.service';
+import { text } from 'telegraf/typings/button';
 
 @Scene(CATEGORY_QUESTION_SCENE_ID)
 export class CategoryQuestionScene {
@@ -33,7 +35,7 @@ export class CategoryQuestionScene {
     });
   }
 
-  @Hears(['ГИС ТОР КНД', '2'])
+  @Hears(['Вопрос'])
   async onQuestionHears(@Ctx() ctx: Context) {
     await ctx.scene.enter(QUESTION_SCENE_ID);
   }

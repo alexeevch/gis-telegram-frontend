@@ -29,7 +29,7 @@ export class MainMenuScene {
     return `Вы покинули сцену ${MAIN_MENU_SCENE_TITLE}`;
   }
 
-  @Command('/leave')
+  @Command('leave')
   async onLeaveCommand(ctx: Context): Promise<void> {
     await ctx.scene.leave();
   }
